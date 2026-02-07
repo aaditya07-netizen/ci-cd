@@ -22,13 +22,17 @@ jobs:
           key: ${{ secrets.PRIVATE_SSH_KEY }}
           port: 22
           script: |
-              export NVM_DIR="$HOME/.nvm"
-              [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            bash -lc '
+              node -v
 
-              nvm use 20
-
-              cd ci-cd
+              cd ~/ci-cd
               git pull origin main
+
+              node -v
+              npm -v
+
               npm install
               npm run build
-              npm run dev
+
+             
+            '
