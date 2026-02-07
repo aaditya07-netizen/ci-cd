@@ -20,12 +20,13 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Check and install Node.js 20 if needed
-            if ! command -v node &> /dev/null || ! node --version | grep -q "v20"; then
-              echo "Installing Node.js 20..."
-              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-              sudo apt-get install -y nodejs
-            fi
+            # Source NVM and use Node 20
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+            
+            # Use Node 20
+            nvm use 20
             
             # Verify Node version
             echo "Node version: $(node --version)"
@@ -42,4 +43,7 @@ jobs:
             
             # Build the project
             npm run build
-           
+            
+            
+            
+            echo "Deployment complete!"
