@@ -58,7 +58,7 @@ export default function Dashboard() {
         </div>
 
         <div>
-          <h1>demo para</h1>
+          <h1>demoa para</h1>
         </div>
 
         {!name && (
