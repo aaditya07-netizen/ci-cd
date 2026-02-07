@@ -17,7 +17,7 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.2.0
         with:
-          host: ${{ secrets.HOST }}
+          host: 54.89.171.134
           username: ubuntu
           key: ${{ secrets.PRIVATE_SSH_KEY }}
           port: 22
@@ -32,5 +32,6 @@ jobs:
             git pull origin main
             npm install
             npm run build
-            
+            pm2 restart greeting-app || pm2 start npm --name "greeting-app" -- start
+            pm2 save
             '
