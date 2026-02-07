@@ -22,13 +22,18 @@ jobs:
           key: ${{ secrets.PRIVATE_SSH_KEY }}
           port: 22
           script: |
-              export PATH="/home/ubuntu/.nvm/versions/node/v20.20.0/bin:$PATH"
+            NODE_BIN="/home/ubuntu/.nvm/versions/node/v20.20.0/bin"
 
-              node -v
-              npm -v
+            # Verify correct Node & npm
+            $NODE_BIN/node -v
+            $NODE_BIN/npm -v
 
-              cd ~/ci-cd
-              git pull origin main
+            # Go to project
+            cd ~/ci-cd
+            git pull origin main
 
-              npm install
-              npm run build
+            # Install & build
+            $NODE_BIN/npm install
+            $NODE_BIN/npm run build
+
+            
