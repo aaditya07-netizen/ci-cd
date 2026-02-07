@@ -47,6 +47,7 @@ export default function Dashboard() {
   };
 
   return (
+    
     <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-2xl w-full">
         <div className="text-center mb-8">
@@ -54,6 +55,10 @@ export default function Dashboard() {
             {greeting}{name && `, ${name}`}!
           </h1>
           <p className="text-2xl text-gray-600">{currentTime}</p>
+        </div>
+
+        <div>
+          <h1>demo para</h1>
         </div>
 
         {!name && (
