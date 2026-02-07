@@ -17,7 +17,7 @@ jobs:
       - name: Execute remote SSH commands on EC2
         uses: appleboy/ssh-action@v1.2.0
         with:
-          host: 13.127.14.79
+          host: 54.89.171.134
           username: ubuntu
           key: ${{ secrets.PRIVATE_SSH_KEY }}
           port: 22
